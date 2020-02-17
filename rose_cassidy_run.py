@@ -22,7 +22,7 @@ def init_data(config_file_name):
 def run_cam():
 
     camera = PiCamera()
-    init_data(rose_cassidy.ini)
+    init_data('rose_cassidy.ini')
 
     print('Photography process will take approximately ', str(int(STOP_FRAME) * int(SLEEP_TIME) / 60), ' minutes')
     print('Taking photos now')
