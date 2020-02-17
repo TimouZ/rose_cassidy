@@ -5,7 +5,7 @@ from os import system
 from picamera import PiCamera
 import configparser
 
-from rose_cassidy_mov import create_film
+from rose_cassidy_mov import create_slowmo_movie
 
 def init_data(config_file_name):
     global SLEEP_TIME
