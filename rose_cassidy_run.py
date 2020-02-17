@@ -11,10 +11,11 @@ def init_data(config_file_name):
     global SLEEP_TIME
     global START_FRAME
     global STOP_FRAME
+    global CAM_RESOLUTION
 
     config = configparser.ConfigParser()
     config.read(config_file_name)
-    camera.resolution = config['DEFAULT']['Resolution']
+    CAM_RESOLUTION = config['DEFAULT']['Resolution']
     SLEEP_TIME = config['DEFAULT']['SleepTime']
     START_FRAME = config['DEFAULT']['FrameCount']
     STOP_FRAME = config['DEFAULT']['FrameStop']
@@ -23,6 +24,7 @@ def run_cam():
 
     camera = PiCamera()
     init_data('rose_cassidy.ini')
+    camera.resolution = CAM_RESOLUTION
 
     print('Photography process will take approximately ', str(int(STOP_FRAME) * int(SLEEP_TIME) / 60), ' minutes')
     print('Taking photos now')
