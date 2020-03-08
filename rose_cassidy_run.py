@@ -1,8 +1,11 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
+
 import time
 import os
-from picamera import PiCamera
 import configparser
+
+from picamera import PiCamera
+
 from rose_cassidy_mov import create_slowmo_movie
 
 CONFIG_FILE_NAME = 'rose_cassidy.ini'
