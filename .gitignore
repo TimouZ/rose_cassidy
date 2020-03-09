@@ -14,3 +14,7 @@ venv.bak/
 
 # IDE specific
 .idea
+
+# User specific
+movie_ready/
+*.mp4

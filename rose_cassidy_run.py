@@ -6,7 +6,7 @@ import configparser
 
 from picamera import PiCamera
 
-from rose_cassidy_mov import create_slowmo_movie
+from rose_cassidy_mov import create_timelapse_movie
 
 CONFIG_FILE_NAME = 'rose_cassidy.ini'
 
@@ -49,4 +49,4 @@ def run_cam():
 
 if __name__ == '__main__':
     run_cam()
-    create_slowmo_movie()
+    create_timelapse_movie()

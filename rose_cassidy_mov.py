@@ -18,12 +18,13 @@ def init_data(config_file_name):
         print('Can`t read config file {}, error {} occured '.format(config_file_name, e))
 
 
-def create_slowmo_movie():
+def create_timelapse_movie():
     init_data(CONFIG_FILE_NAME)    
     
-    print('Converting photos to film now')
+    print('-------Converting photos to movie now-------')
     system('ffmpeg -r 24 -i image%04d.jpg -vcodec libx264 -crf 20 -g 15 `date +%Y%m%d%H%M`timelapse.mp4')
-
+    print('----------------Movie ready-----------------')
+    
      #Checking directory and creating directory
     if not os.path.exists(MOVIE_DIR):
         print('Can`t find dir for movie, creating...')
@@ -33,7 +34,7 @@ def create_slowmo_movie():
             print('Can`t create dir for movie, error {} occured '.format(e))
  
     print('Moving completed mp4 file')
-    system('mv *.mp4 ~/rose_cassidy/completed/')
+    system('mv *.mp4 {}'.format(MOVIE_DIR))
 
     print('Cleaning up old jpgs')
     system('rm *.jpg')
