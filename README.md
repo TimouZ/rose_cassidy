@@ -6,7 +6,8 @@ A simple application for creating time-lapse videos using RaspberryPi camera.
 
 Firs of all you need to install OS on RPi and enable SSH or use keyboard + mouse + display.
 
-How install OS:
+How install OS
+
 https://www.raspberrypi.org/documentation/installation/installing-images/
 
 How to discover your RPi in network:
@@ -14,9 +15,11 @@ How to discover your RPi in network:
 nmap -sn 192.168.0.0/24 – to discover raspberry IP
 ```
 How to setup SSH on RPi
+
 https://www.raspberrypi.org/documentation/remote-access/ssh/
 
 How to connect camera to RPi and enable it 
+
 https://thepihut.com/blogs/raspberry-pi-tutorials/16021420-how-to-install-use-the-raspberry-pi-camera
 
 **Dev environment deployment**
@@ -43,7 +46,7 @@ apt install ubuntu-restricted-extras
 ### Installing
 
 ```
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Usage
