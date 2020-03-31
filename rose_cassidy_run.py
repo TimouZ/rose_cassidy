@@ -7,32 +7,19 @@ import configparser
 from picamera import PiCamera
 
 from rose_cassidy_mov import create_timelapse_movie
+import helpers
 
 CONFIG_FILE_NAME = 'rose_cassidy.ini'
 
 
-def init_data(config_file_name):
-    global SLEEP_TIME
-    global FRAME_COUNT
-    global CAMERA_RESOLUTION
-    global MOVIE_DIR
-    config = configparser.ConfigParser()   
-    try: 
-        with open(config_file_name) as config_file:
-            config.read_file(config_file)
-            #CAMERA_RESOLUTION = config.get('camera_settings','Resolution')
-            SLEEP_TIME = int(config.get('photos_settings', 'SleepTime'))
-            FRAME_COUNT = int(config.get('photos_settings','FrameCount'))
-    except Exception as e:
-        print('Can`t read config file {}, error {} occured '.format(config_file_name, e))
-       
-
 def run_cam():
     camera = PiCamera()
-    init_data(CONFIG_FILE_NAME)
+    camera_resolution = helpers.get_setting(CONFIG_FILE_NAME, 'Camera', 'resolution')
+    sleep_time = helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'sleep_time')
+    frame_count = helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'frame_count')
     #camera.resolution(CAMERA_RESOLUTION)
 
-    print('Photography process will take approximately ', str(int(FRAME_COUNT) * int(SLEEP_TIME) / 60), ' minutes')
+    print('Photography process will take approximately ', str(int(frame_count) * int(sleep_time) / 60), ' minutes')
     print('Taking photos now...')
 
     try:

@@ -3,23 +3,12 @@ import time
 import os
 import configparser
 from os import system
+import helpers
 
 CONFIG_FILE_NAME = 'rose_cassidy.ini'
 
-
-def init_data(config_file_name):
-    global MOVIE_DIR
-    config = configparser.ConfigParser()   
-    try: 
-        with open(config_file_name) as config_file:
-            config.read_file(config_file)
-            MOVIE_DIR = config.get('environment_settings','Movie_dir')
-    except Exception as e:
-        print('Can`t read config file {}, error {} occured '.format(config_file_name, e))
-
-
 def create_timelapse_movie():
-    init_data(CONFIG_FILE_NAME)    
+    helpers.get_setting(CONFIG_FILE_NAME, 'Environment', 'movie_dir')
     
     print('-------Converting photos to movie now-------')
     system('ffmpeg -r 24 -i image%04d.jpg -vcodec libx264 -crf 20 -g 15 `date +%Y%m%d%H%M`timelapse.mp4')

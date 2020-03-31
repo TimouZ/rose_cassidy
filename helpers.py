@@ -52,7 +52,7 @@ def get_setting(path, section, setting):
     """
     config = get_config(path)
     value = config.get(section, setting)
-    message = "Get {section} {setting}".format(section=section, setting=setting)
+    message = "Get setting: {section} {setting}".format(section=section, setting=setting)
     print(message)
     return value
 
