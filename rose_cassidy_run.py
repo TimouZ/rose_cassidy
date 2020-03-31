@@ -23,10 +23,10 @@ def run_cam():
     print('Taking photos now...')
 
     try:
-        for frame in range(FRAME_COUNT):
-            print('Picture: ' + str(frame) + ' of ' + str(FRAME_COUNT))
+        for frame in range(frame_count):
+            print('Picture: ' + str(frame) + ' of ' + str(frame_count))
             camera.capture('image' + str(frame).zfill(4) + '.jpg')
-            time.sleep(SLEEP_TIME)
+            time.sleep(sleep_time)
     except Exception as e:
         print('Can`t take photos, error {} occured '.format(e))
     else:
