@@ -7,10 +7,12 @@ import os
 import configparser
 
 
+# Config handling functions
 def create_config(path):
-    """
-    :param path:
-    :return:
+    """Creates new config file with name 'path' using default setting values
+
+    :param path: Config file
+    :return: Nothing
     """
     config = configparser.ConfigParser()
     config.add_section("camera_settings")
@@ -26,26 +28,27 @@ def create_config(path):
 
 
 def get_config(path):
-    """
-    :param path:
-    :return:
+    """Returns ConfigParser object for further processing
+
+    :param path: Config file
+    :return: ConfigParser object
     """
     if not os.path.exists(path):
         create_config(path)
 
     config = configparser.ConfigParser()
-    config.read(path)
     with open(path) as config_file:
         config.read_file(config_file)
     return config
 
 
 def get_setting(path, section, setting):
-    """
-    :param path:
-    :param section:
-    :param setting:
-    :return:
+    """Retrieves from a file and returns the specified setting
+
+    :param path: Config file
+    :param section: Section in file
+    :param setting: Specified setting
+    :return: Specified setting
     """
     config = get_config(path)
     value = config.get(section, setting)
@@ -55,12 +58,13 @@ def get_setting(path, section, setting):
 
 
 def update_setting(path, section, setting, value):
-    """
-    :param path:
-    :param section:
-    :param setting:
-    :param value:
-    :return:
+    """Updates the specified setting in file
+
+    :param path: Config file
+    :param section: Section in file
+    :param setting: Specified setting
+    :param value: New value of the specified setting
+    :return: Nothing
     """
     config = get_config(path)
     config.set(section, setting, value)
@@ -69,10 +73,11 @@ def update_setting(path, section, setting, value):
 
 
 def delete_setting(path, section, setting):
-    """
-    :param path:
-    :param section:
-    :param setting:
+    """Deletes specified setting in config file
+
+    :param path: Config file
+    :param section: Section in file
+    :param setting: Specified setting to delete
     :return:
     """
     config = get_config(path)
