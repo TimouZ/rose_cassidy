@@ -15,8 +15,8 @@ CONFIG_FILE_NAME = 'rose_cassidy.ini'
 def run_cam():
     camera = PiCamera()
     camera_resolution = helpers.get_setting(CONFIG_FILE_NAME, 'Camera', 'resolution')
-    sleep_time = str(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'sleep_time'))
-    frame_count = str(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'frame_count'))
+    sleep_time = int(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'sleep_time'))
+    frame_count = int(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'frame_count'))
     #camera.resolution(CAMERA_RESOLUTION)
 
     print('Photography process will take approximately ', str(int(frame_count) * int(sleep_time) / 60), ' minutes')
