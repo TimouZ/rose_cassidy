@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-A module for helper functions
+""" A module for helper functions
 
 """
 

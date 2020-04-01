@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
-"""
-Pass
+"""Time-lapse movie maker
+
+The script allows user to create time-lapse movie from photo
 
 """
-
 
 import time
 import picamera
 from rose_cassidy_mov import create_timelapse_movie
 import helpers
-
 
 CONFIG_FILE_NAME = 'rose_cassidy.ini'
 
@@ -19,7 +18,7 @@ def run_cam():
     camera_resolution = helpers.get_setting(CONFIG_FILE_NAME, 'Camera', 'resolution')
     sleep_time = int(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'sleep_time'))
     frame_count = int(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'frame_count'))
-    #camera.resolution(CAMERA_RESOLUTION)
+    # camera.resolution(CAMERA_RESOLUTION)
 
     print('Photography process will take approximately ', str(int(frame_count) * int(sleep_time) / 60), ' minutes')
     print('Taking photos now...')
@@ -35,6 +34,7 @@ def run_cam():
         print('No errors occured during the photographing process.')
     finally:
         camera.close()
+
 
 if __name__ == '__main__':
     run_cam()
