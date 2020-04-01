@@ -14,11 +14,18 @@ CONFIG_FILE_NAME = 'rose_cassidy.ini'
 
 
 def run_cam():
+    """Init Pi camera module and takes photos
+
+    :return: Nothing
+    """
+
     camera = picamera.PiCamera()
 
+    # Initial photos settings
     sleep_time = int(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'sleep_time'))
     frame_count = int(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'frame_count'))
 
+    # TODO Replace this printings with logging
     print('Photography process will take approximately ', str(int(frame_count) * int(sleep_time) / 60), ' minutes')
     print('Taking photos now...')
 
@@ -28,8 +35,10 @@ def run_cam():
             camera.capture('image' + str(frame).zfill(4) + '.jpg')
             time.sleep(sleep_time)
     except Exception as e:
+        # TODO Replace this printings with logging
         print('Can`t take photos, error {} occured '.format(e))
     else:
+        # TODO Replace this printings with logging
         print('No errors occured during the photographing process.')
     finally:
         camera.close()
