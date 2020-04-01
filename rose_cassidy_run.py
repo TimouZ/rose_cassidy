@@ -6,7 +6,7 @@ Pass
 
 
 import time
-from picamera import PiCamera
+import picamera
 from rose_cassidy_mov import create_timelapse_movie
 import helpers
 
@@ -15,7 +15,7 @@ CONFIG_FILE_NAME = 'rose_cassidy.ini'
 
 
 def run_cam():
-    camera = PiCamera()
+    camera = picamera.PiCamera()
     camera_resolution = helpers.get_setting(CONFIG_FILE_NAME, 'Camera', 'resolution')
     sleep_time = int(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'sleep_time'))
     frame_count = int(helpers.get_setting(CONFIG_FILE_NAME, 'Photos', 'frame_count'))
