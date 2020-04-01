@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
-import time
+"""
+Pass
+
+"""
+
+
 import os
-import configparser
-from os import system
 import helpers
 
+
 CONFIG_FILE_NAME = 'rose_cassidy.ini'
+
 
 def create_timelapse_movie():
     movie_dir = helpers.get_setting(CONFIG_FILE_NAME, 'Environment', 'movie_dir')
     
     print('-------Converting photos to movie now-------')
-    system('ffmpeg -r 24 -i image%04d.jpg -vcodec libx264 -crf 20 -g 15 `date +%Y%m%d%H%M`timelapse.mp4')
+    os.system('ffmpeg -r 24 -i image%04d.jpg -vcodec libx264 -crf 20 -g 15 `date +%Y%m%d%H%M`timelapse.mp4')
     print('----------------Movie ready-----------------')
     
      #Checking directory and creating directory
@@ -23,9 +28,9 @@ def create_timelapse_movie():
             print('Can`t create dir for movie, error {} occured '.format(e))
  
     print('Moving completed mp4 file')
-    system('mv *.mp4 {}'.format(movie_dir))
+    os.system('mv *.mp4 {}'.format(movie_dir))
 
     print('Cleaning up old jpgs')
-    system('rm *.jpg')
+    os.system('rm *.jpg')
 
     print('Done')

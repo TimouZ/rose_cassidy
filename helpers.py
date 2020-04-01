@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """
 A module for helper functions
+
 """
+
 
 import os
 import configparser

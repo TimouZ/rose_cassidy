@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
+"""
+Pass
+
+"""
+
 
 import time
-import os
-import configparser
-
 from picamera import PiCamera
-
 from rose_cassidy_mov import create_timelapse_movie
 import helpers
+
 
 CONFIG_FILE_NAME = 'rose_cassidy.ini'
 
